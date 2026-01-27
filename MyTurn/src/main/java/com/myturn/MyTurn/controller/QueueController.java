@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.myturn.MyTurn.model.QueueToken;
 import com.myturn.MyTurn.repository.QueueRepository;
 import com.myturn.MyTurn.repository.QueueTokenRepository;
+import com.myturn.MyTurn.websocket.QueueSocketController;
+
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +27,9 @@ public class QueueController {
     private QueueRepository queueRepository;
     @Autowired
     private QueueTokenRepository queueTokenRepository;
+    @Autowired
+    private QueueSocketController socketController;
+
     @PostMapping("/create")
     public String createQueue(@RequestParam String name) {
         Queue q=new Queue();
@@ -78,7 +84,8 @@ public class QueueController {
         queueTokenRepository.save(currentToken);
         q.setCurrentToken(current+1);
         queueRepository.save(q);
-        return "Now Serving Token: "+current+1;
+        socketController.sendUpdate(qid, current + 1);
+        return "Now Serving Token: "+(current+1);
     }
     @GetMapping("/position/{qid}")
     public String getMethodName(@PathVariable Long qid,@RequestParam String username) {
@@ -105,6 +112,34 @@ public class QueueController {
            " | People Ahead: " + ahead;
     }
     
-    
+    @GetMapping("/dashboard")
+    public List<Map<String, Object>> getDashboard() {
+
+        List<Queue> queues = queueRepository.findAll();
+
+        List<Map<String, Object>> result = new ArrayList<>();
+
+        for (Queue q : queues) {
+
+            Map<String, Object> data = new HashMap<>();
+
+            Long qid = q.getId();
+
+            int waitingCount =
+                queueTokenRepository
+                    .findByQueueIdAndStatusOrderByTokenNumber(qid, "WAITING")
+                    .size();
+
+            data.put("queueId", qid);
+            data.put("name", q.getName());
+            data.put("currentToken", q.getCurrentToken());
+            data.put("waiting", waitingCount);
+            data.put("active", q.isActive());
+
+            result.add(data);
+        }
+
+        return result;
+    }
     
 }
