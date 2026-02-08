@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MyTurn | Live Queues</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<link rel="stylesheet" href="queue.css">
+
+</head>
+
+<body class="bg-slate-950 text-white p-8">
+
+
+<h1 class="text-3xl font-bold text-center mb-8 text-slate-200">
+  MyTurn Live Queues
+</h1>
+
+
+<p id="msg" class="text-center text-red-400 mb-6"></p>
+<div id="queues"
+class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+</div>
+
+<div id="liveBox"
+class="hidden p-6 rounded-xl max-w-xl mx-auto">
+
+<h3 class="text-xl font-semibold mb-3 text-slate-300">
+  Live Status
+</h3>
+
+<p id="status" class="text-lg text-emerald-400">
+  Waiting...
+</p>
+
+</div>
+
+
+<script src="queue.js">
+</script>
+
+</body>
+</html>
