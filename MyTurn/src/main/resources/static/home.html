@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MyTurn | Smart Queue</title>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="home.css">
+</head>
+
+<body class="text-white">
+
+<div class="floating-logo">
+
+  <video
+    src="earth.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+  </video>
+
+  <span>MyTurn</span>
+
+</div>
+
+<canvas id="magnifier"></canvas>
+
+<div class="hero">
+
+  <div class="light"></div>
+
+  <nav class="glass fixed top-6 left-1/2 -translate-x-1/2
+    px-8 py-3 rounded-full flex gap-8 z-50 shadow-xl">
+    <a class="hover:text-indigo-300 transition" href="home.html">MyTurn</a>
+    <a class="hover:text-indigo-300 transition" href="home.html">Home</a>
+
+    <a id="dashboardLink"
+       class="hover:text-indigo-300 transition hidden"
+       href="dashboard.html">
+      Dashboard
+    </a>
+
+    <a id="queueLink"
+       class="hover:text-indigo-300 transition hidden"
+       href="#">
+      Queues
+    </a>
+
+    <a class="hover:text-indigo-300 transition" href="contact.html">Contact</a>
+
+    <a href="login.html"
+       class="bg-indigo-500/30 px-4 py-1 rounded-full
+       hover:bg-indigo-500/60 transition">
+
+      Login
+    </a>
+
+  </nav>
+
+  <div class="hero-content reveal">
+
+    <h1 class="text-7xl md:text-8xl lg:text-9xl font-semibold uppercase mb-4">
+      My<span class="text-indigo-300 font-light">Turn</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-gray-300 max-w-xl mb-10">
+      Smart. Secure. Real-time Queue Management Platform
+    </p>
+
+    <button id="getStartedBtn"
+      class="bg-white/20 backdrop-blur-md
+      px-8 py-4 rounded-xl
+      text-lg font-semibold
+      hover:bg-white/30
+      hover:scale-105
+      transition-all duration-300">
+
+      Get Started
+    </button>
+
+  </div>
+
+</div>
+
+<section class="relative z-20 py-24 px-6 bg-black/40 backdrop-blur-xl reveal">
+
+  <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+    Why Choose <span class="text-indigo-300">MyTurn?</span>
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-24">
+
+    <div class="glass p-8 rounded-2xl text-center hover:scale-105 transition reveal delay-1">
+
+      <div class="text-4xl mb-4">⚡</div>
+      <h3 class="text-xl font-semibold mb-2">Real-Time Queue</h3>
+      <p class="text-gray-300 text-sm">
+        Live updates and automatic handling
+      </p>
+    </div>
+
+    <div class="glass p-8 rounded-2xl text-center hover:scale-105 transition reveal delay-2">
+
+      <div class="text-4xl mb-4">🔐</div>
+      <h3 class="text-xl font-semibold mb-2">Secure Login</h3>
+      <p class="text-gray-300 text-sm">
+        Role-based authentication
+      </p>
+    </div>
+
+    <div class="glass p-8 rounded-2xl text-center hover:scale-105 transition reveal delay-3">
+
+      <div class="text-4xl mb-4">📊</div>
+      <h3 class="text-xl font-semibold mb-2">Admin Dashboard</h3>
+      <p class="text-gray-300 text-sm">
+        Manage queues easily
+      </p>
+    </div>
+
+  </div>
+
+<section class="stats-section reveal">
+
+  <h2 class="text-4xl md:text-5xl font-bold text-center mb-14">
+    Trusted by <span class="text-indigo-300">Thousands</span>
+  </h2>
+
+  <div class="stats-container">
+
+    <div class="glass stat-box reveal delay-1">
+      <h3>50K+</h3>
+      <p>Active Users</p>
+    </div>
+
+    <div class="glass stat-box reveal delay-2">
+      <h3>1M+</h3>
+      <p>Queues Managed</p>
+    </div>
+
+    <div class="glass stat-box reveal delay-3">
+      <h3>5K+</h3>
+      <p>Businesses</p>
+    </div>
+
+    <div class="glass stat-box reveal delay-4">
+      <h3>99%</h3>
+      <p>Satisfaction Rate</p>
+    </div>
+
+  </div>
+
+</section>
+
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+    Quick Highlights 
+  </h2>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+
+    <div class="flash glass flash-card reveal delay-1">
+
+      <div class="flash-icon">⏳</div>
+      <h4>Save Time</h4>
+      <p>No more standing in long queues</p>
+
+    </div>
+
+    <div class="flash glass flash-card reveal delay-2">
+
+      <div class="flash-icon">📱</div>
+      <h4>Mobile Friendly</h4>
+      <p>Works smoothly on all devices</p>
+
+    </div>
+
+    <div class="flash glass flash-card reveal delay-3">
+
+      <div class="flash-icon">⚙</div>
+      <h4>Smart System</h4>
+      <p>Auto assignment & alerts</p>
+
+    </div>
+
+    <div class="flash glass flash-card reveal delay-4">
+
+      <div class="flash-icon">💼</div>
+      <h4>Professional</h4>
+      <p>Enterprise-grade experience</p>
+
+    </div>
+
+  </div>
+
+  <div class="text-center mt-20">
+
+    <h3 class="text-3xl font-semibold mb-6">
+      Ready to Manage Smarter?
+    </h3>
+
+    <button
+      onclick="document.getElementById('getStartedBtn').click()"
+      class="bg-indigo-500 px-10 py-4 rounded-xl font-semibold
+      hover:bg-indigo-600 hover:scale-105 transition">
+
+      Start Now 
+    </button>
+
+  </div>
+
+</section>
+
+<section class="contact-section reveal">
+
+  <h2 class="contact-title">
+    Contact Us
+  </h2>
+
+  <p class="contact-subtitle">
+    Have questions? We'd love to hear from you.
+  </p>
+
+  <div class="contact-container">
+
+    <div class="glass contact-box">
+
+      <h3>Get in Touch</h3>
+
+      <p>📧 Email: support@myturn.com</p>
+      <p>📞 Phone: +91 98765 43210</p>
+      <p>📍 Location: India</p>
+
+    </div>
+
+    <div class="glass contact-box">
+
+      <h3>Send Message</h3>
+
+      <form class="contact-form">
+
+        <input type="text" placeholder="Your Name" required>
+
+        <input type="email" placeholder="Your Email" required>
+
+        <textarea
+          rows="4"
+          placeholder="Your Message"
+          required></textarea>
+
+        <button type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="home.js"></script>
+
+</body>
+</html>
