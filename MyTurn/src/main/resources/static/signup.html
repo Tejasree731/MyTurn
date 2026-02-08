@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MyTurn | Signup</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="signup.css">
+</head>
+
+<body class="text-white">
+
+    <div class="hero flex items-center justify-center">
+
+    <div class="light"></div>
+
+    <div class="glass relative z-10 p-8 w-96 rounded-2xl shadow-2xl">
+
+    <h2 class="text-4xl font-semibold text-center mb-2">
+
+      My<span class="text-indigo-300 font-light">Turn</span>
+
+    </h2>
+
+    <p class="text-center text-gray-300 mb-6 text-sm">
+      Create your account
+    </p>
+
+    <input id="username"
+      class="w-full bg-white/20 border border-white/30
+      text-white placeholder-white/60
+      p-2 rounded mb-3 focus:outline-none
+      focus:ring-2 focus:ring-indigo-400/50"
+      placeholder="Username">
+
+    <input id="email"
+      type="email"
+      class="w-full bg-white/20 border border-white/30
+      text-white placeholder-white/60
+      p-2 rounded mb-3 focus:outline-none
+      focus:ring-2 focus:ring-indigo-400/50"
+      placeholder="Email">
+
+    <input id="password"
+      type="password"
+      class="w-full bg-white/20 border border-white/30
+      text-white placeholder-white/60
+      p-2 rounded mb-4 focus:outline-none
+      focus:ring-2 focus:ring-indigo-400/50"
+      placeholder="Password">
+
+    <button onclick="signup()"
+      class="w-full bg-indigo-500/40 hover:bg-indigo-500/60
+      py-2 rounded-lg font-semibold transition-all duration-300
+      hover:scale-[1.02]">
+
+      Sign Up
+    </button>
+
+    <p id="msg" class="text-center mt-4 text-red-300"></p>
+
+    <div class="text-center mt-4 text-sm text-gray-300">
+      Already have an account?
+      <a href="login.html"
+      class="text-indigo-400 hover:underline ml-1">
+        Login
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="signup.js">
+
+</script>
+
+</body>
+</html>
