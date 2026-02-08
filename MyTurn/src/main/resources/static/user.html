@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyTurn - User</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+
+<div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl w-96 text-center">
+
+    <h2 class="text-2xl font-bold mb-4 text-blue-600">
+        MyTurn Status
+    </h2>
+
+    <input id="qid"
+        class="w-full border p-2 rounded mb-3"
+        placeholder="Queue ID">
+
+    <input id="username"
+        class="w-full border p-2 rounded mb-3"
+        placeholder="Username">
+
+    <button onclick="check()"
+        class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+        Check Position
+    </button>
+
+    <p id="result" class="mt-4 text-lg font-semibold"></p>
+
+</div>
+
+<script>
+function check() {
+
+    const qid = document.getElementById("qid").value;
+    const user = document.getElementById("username").value;
+
+    fetch(`/api/queue/position/${qid}?username=${user}`, {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+    })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("result").innerText = data;
+    });
+}
+</script>
+
+</body>
+</html>
