@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.myturn.MyTurn.repository.UserRepository;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,27 +36,37 @@ public class AuthController {
         user.setEmail(request.getEmail());
         user.setUsername(request.getUsername());
         user.setPassword(encoder.encode(request.getPassword()));
-        user.setRole("User");
+        user.setRole("USER");
+
         userRepository.save(user);  
 
         return "User registered successfully!";
         
     }
+    //using map to store credentials in local storage
+    @PostMapping("/login")
+    public Map<String, Object> login(@RequestBody LoginRequest request) {
 
-    @PostMapping("login")
-    public String login(@RequestBody LoginRequest request) {
-        User user=userRepository.findByUsername(request.getUsername())
-                    .orElse(null);
-        if(user==null){
-            return "User not found!";
+        Map<String, Object> res = new HashMap<>();
+        User user = userRepository.findByUsername(request.getUsername())
+                .orElse(null);
+
+        if (user == null) {
+            res.put("error", "User not found");
+            return res;
         }
-        if(!encoder.matches(request.getPassword(),user.getPassword())){
-            System.out.println(request.getPassword());
-            return "Incorrect password!";
+
+        if (!encoder.matches(request.getPassword(), user.getPassword())) {
+            res.put("error", "Invalid password");
+            return res;
         }
-        String token=jwtutil.generateToken(user.getUsername());
-        return "Login Successful\nToken: "+token;
-    }
-    
-    
+
+        String token = jwtutil.generateToken(user.getUsername());
+
+        res.put("token", token);
+        res.put("role", user.getRole());
+        res.put("username", user.getUsername());
+
+        return res;
+    }   
 }
