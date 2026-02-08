@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MyTurn | Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body class="text-white">
+
+    <div class="page-bg">
+
+    <nav class="glass fixed top-6 left-1/2 -translate-x-1/2
+    px-8 py-3 rounded-full flex gap-8 shadow-xl z-50">
+
+        <span class="text-xl font-semibold tracking-wide">
+        My<span class="text-indigo-300 font-light">Turn</span>
+        </span>
+
+        <span class="nav-item">Dashboard</span>
+        <span class="nav-item">Queues</span>
+        <span class="nav-item">Users</span>
+        <span class="nav-item">Analytics</span>
+
+        <button onclick="logout()"
+            class="bg-red-500/30 px-4 py-1 rounded-full
+            hover:bg-red-500/60 transition">
+
+            Logout
+        </button>
+
+    </nav>
+
+    <section class="pt-32 text-center">
+
+        <h1 class="text-5xl font-semibold mb-3 tracking-wide">
+        Manage Your Queues
+        </h1>
+
+        <p class="text-gray-300 text-lg mb-10">
+            Real-time. Smart. Beautiful.
+        </p>
+
+    </section>
+
+    <section class="px-10 pb-24">
+        <p id="msg" class="text-center text-red-400 mb-4"></p>
+        <div id="adminPanel" class="hidden mb-12">
+
+        <div class="glass p-6 rounded-2xl mb-6">
+
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-300">
+        Admin Panel
+        </h2>
+
+        <div class="flex gap-4 flex-wrap">
+
+        <input id="queueName"
+            placeholder="New Queue Name"
+            class="bg-white/20 border border-white/30
+            px-4 py-2 rounded-lg outline-none text-white">
+
+        <button onclick="createQueue()"
+        class="bg-indigo-500/40 px-5 py-2 rounded-lg
+        hover:bg-indigo-500/60 transition">
+
+        ➕ Create Queue
+      </button>
+    </div>
+    </div>
+    </div>
+
+    <div id="data"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    </div>
+    </section>
+    </div>
+
+<script src="dashboard.js">
+
+</script>
+
+
+</body>
+</html>
