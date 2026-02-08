@@ -1,7 +1,9 @@
 package com.myturn.MyTurn.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"tokens","hibernateLazyInitializer","handler"})
 @Entity
 @Table(name="queues")
 public class Queue {
