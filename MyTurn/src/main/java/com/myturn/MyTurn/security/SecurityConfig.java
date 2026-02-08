@@ -52,6 +52,8 @@ public class SecurityConfig {
                     "/signup.html",
                     "/queue.html",
                     "/queue-view.html",
+                    "/map.jpg",
+                    "/earth.mp4",
                     "/ws/**",
                     "/**/*.html",
                     "/**/*.css",
